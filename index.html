@@ -5,10 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Introdução ao Javascript</title>
+    <link rel="stylesheet" type="text/css" href="css/houdini.css">
+
 </head>
 <body>
+    <header>
+        <img src= "images/headerImage.jpg">
+        <h1>Houdini</h1>
+    </header>
+
+    <h1>Olá, viajante!</h1>
+    <h2>Vamos jogar um jogo...</h2>
+    <h3>Pensa num número entre <span id="minNum"></span> e <span id="maxNum"></span></h3>
+    <h3>Eu acho que o número que pensaste foi: <span id="tentativa"></span></h3>
+    <hr>
+    <button onclick="maior()">É maior!</button>
+    <button onclick="menor()">É menor!</button>
+    <button onclick="acertou()">É esse!</button>
+    <hr>
+    <h1 id="génio"></h1>
+
     <script>
-        
+        var minNum = 10;
+        var maxNum = 40;
+        var tentativa = Math.round(minNum + maxNum) / 2;
+
+        document.getElementById("minNum").innerHTML = minNum;
+        document.getElementById("maxNum").innerHTML = maxNum;
+        document.getElementById("tentativa").innerHTML = tentativa;
+
+        var maior = function() {
+            //O que acontece se o jogador pressionar é maior
+            minNum = tentativa + 1;
+            tentativa = randomRange(minNum, maxNum);
+            document.getElementById("tentativa").innerHTML = tentativa;
+
+        }
+        var menor = function() {
+            //O que acontece se o jogador pressionar é menor
+            maxNum = tentativa - 1;
+            tentativa = randomRange(minNum, maxNum);
+            document.getElementById("tentativa").innerHTML = tentativa;
+
+        }
+            var acertou = function() {
+            //O que acontece se o jogador pressionar é esse
+            document.getElementById("génio").innerHTML = "SOU UM GÉNIO!";
+        }
+
+        var randomRange = function(a, b) {
+            var novaTentativa = Math.round( a + Math.random() * (b - a));
+            return novaTentativa;
+        }
     </script>
-</body>
+
+ </body>
 </html>
